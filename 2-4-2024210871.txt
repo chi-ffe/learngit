@@ -1,9 +1,46 @@
 Git学习笔记
-一、	Git概念
+一、Git概念
    Git 是一种分布式版本控制系统，用于管理软件项目的源代码。
-二、	基本操作
-1、	创建仓库：①创建空目录②通过git init命令把这个目录变成Git可以管理的仓库。
-2、	添加文件到仓库：①git add <readme.txt（文件名）>，可反复多次使用。②git commit -m <message（本次提交的说明）>，完成。
-3、	一些命令：①git status：仓库当前的状态②git diff：查看哪里被修改了③git log：历史记录。加上--pretty=oneline参数：简介查看④回退：git reset --hard HEAD^往上100个版本：HEAD~100。⑤回退后返回: git reset --hard 1094a（版本号）⑥git reflog：查看命令历史，以便确定要回到未来的哪个版本。⑦git checkout -- readme.txt：把readme.txt文件在工作区的修改全部撤销。⑧git reset HEAD <file>：可以把暂存区的修改撤销掉（unstage），重新放回工作区。⑨git rm：删除一个文件
-4、	一些名称：工作区：在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。版本库：工作区有一个隐藏目录.git。暂存区：Git的版本库里最重要的就是称为stage（或者叫index）的暂存区。需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
+二、基本操作
+1、创建仓库：①创建空目录②通过git init命令把这个目录变成Git可以管理的仓库。
+2、添加文件到仓库：
+①git add <readme.txt（文件名）>，可反复多次使用。
+②git commit -m <message（本次提交的说明）>，完成。
+3、一些命令：
+①git status：仓库当前的状态②git diff：查看哪里被修改了
+③git log：历史记录。加上--pretty=oneline参数：简介查看
+④回退：git reset --hard HEAD^往上100个版本：HEAD~100。
+⑤回退后返回: git reset --hard 1094a（版本号）
+⑥git reflog：查看命令历史，以便确定要回到未来的哪个版本。
+⑦git checkout -- readme.txt：把readme.txt文件在工作区的修改全部撤销。
+⑧git reset HEAD <file>：可以把暂存区的修改撤销掉（unstage），重新放回工作区。
+⑨git rm：删除一个文件
+4、一些名称：工作区：在电脑里能看到的目录，比如我的learngit文件夹就是一个工作区。
+版本库：工作区有一个隐藏目录.git。
+暂存区：Git的版本库里最重要的就是称为stage（或者叫index）的暂存区。需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
+5、分支管理
+查看分支：git branch
 
+创建分支：git branch <name>
+
+切换分支：git checkout <name>或者git switch <name>
+
+创建+切换分支：git checkout -b <name>或者git switch -c <name>
+
+合并某分支到当前分支：git merge <name>
+
+删除分支：git branch -d <name>
+
+查看分支合并图：git log --graph
+6、标签
+命令git tag <tagname>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+命令git tag -a <tagname> -m "blablabla..."可以指定标签信息；
+命令git tag可以查看所有标签。
+命令git push origin <tagname>可以推送一个本地标签；
+命令git push origin --tags可以推送全部未推送过的本地标签；
+命令git tag -d <tagname>可以删除一个本地标签；
+命令git push origin :refs/tags/<tagname>可以删除一个远程标签。
+7、使用
+在GitHub上，可以任意Fork开源仓库；
+自己拥有Fork后的仓库的读写权限；
+可以推送pull request给官方仓库来贡献代码。
